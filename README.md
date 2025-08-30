@@ -23,16 +23,11 @@
 
 2. **Create Zenkai-POML folder**
    ```bash
-   mkdir Zenkai-POML
+   git clone https://github.com/MushroomFleet/ComfyUI-DJZ-POML
    cd Zenkai-POML
    ```
 
-3. **Download node files**
-   - Copy `__init__.py` → save as `__init__.py`
-   - Copy `zenkai_poml.py` → save as `zenkai_poml.py`
-   - Copy `requirements.txt` → save as `requirements.txt`
-
-4. **Install dependencies** ⚠️ **CRITICAL STEP**
+3. **Install dependencies** ⚠️ **CRITICAL STEP**
    
    **For ComfyUI Portable (Windows):**
    ```batch
