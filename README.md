@@ -33,15 +33,17 @@
    - Copy `requirements.txt` → save as `requirements.txt`
 
 4. **Install dependencies** ⚠️ **CRITICAL STEP**
+   
+   **For ComfyUI Portable (Windows):**
+   ```batch
+   # Double-click install-portable.bat
+   # OR run from command line:
+   install-portable.bat
+   ```
+   
+   **For Standard ComfyUI Installation:**
    ```bash
-   # Option A: Full installation (recommended)
    pip install -r requirements.txt
-   
-   # Option B: Minimal installation (basic functionality only)
-   pip install poml pandas PyPDF2 Pillow requests jsonschema
-   
-   # Option C: Core only (fallback parser, limited features)
-   pip install poml
    ```
 
 5. **Restart ComfyUI**
@@ -49,16 +51,15 @@
    - Restart the application
    - Check console for "🚀 Zenkai-POML nodes loaded successfully!"
 
-### Dependency Levels
+### Installation Methods
 
-| Level | Installation | Features Available |
-|-------|-------------|-------------------|
-| **Full** | `pip install -r requirements.txt` | All POML features, official SDK, file processing |
-| **Standard** | `pip install poml pandas PyPDF2 Pillow requests` | Core POML + data integration |
-| **Minimal** | `pip install poml` | Official POML SDK only |
-| **Fallback** | No dependencies | Basic parsing (limited functionality) |
+| Method | Command | Use Case |
+|--------|---------|----------|
+| **ComfyUI Portable** | `install-portable.bat` | Windows portable ComfyUI users - automatically detects embedded Python |
+| **Standard Installation** | `pip install -r requirements.txt` | Regular ComfyUI installations with system Python |
+| **Fallback** | No dependencies | Basic parsing only (limited functionality) |
 
-**⚠️ Warning**: Without dependencies, many POML features will be disabled!
+**⚠️ Warning**: The install-portable.bat script automatically installs all dependencies from requirements.txt using ComfyUI's embedded Python environment for seamless integration.
 
 ### First Use
 
@@ -287,6 +288,13 @@ Present findings with actionable insights.
    ```
 
 3. **Check dependencies installation:**
+   
+   **For ComfyUI Portable (Windows):**
+   ```batch
+   install-portable.bat
+   ```
+   
+   **For Standard ComfyUI Installation:**
    ```bash
    cd ComfyUI/custom_nodes/Zenkai-POML
    pip install -r requirements.txt
@@ -296,11 +304,10 @@ Present findings with actionable insights.
 
 | Error Message | Solution |
 |--------------|----------|
-| `ModuleNotFoundError: No module named 'poml'` | `pip install poml` |
-| `ModuleNotFoundError: No module named 'pandas'` | `pip install pandas` |  
-| `ModuleNotFoundError: No module named 'PyPDF2'` | `pip install PyPDF2` |
-| `ModuleNotFoundError: No module named 'PIL'` | `pip install Pillow` |
-| `ModuleNotFoundError: No module named 'requests'` | `pip install requests` |
+| Any `ModuleNotFoundError` | **ComfyUI Portable**: Run `install-portable.bat` |
+| Any `ModuleNotFoundError` | **Standard Installation**: Run `pip install -r requirements.txt` |
+| Dependencies partially missing | Re-run installation method for your ComfyUI setup |
+| `ModuleNotFoundError: No module named 'poml'` | Check if installation completed successfully |
 
 **Problem: POML Features Not Working**
 
@@ -397,7 +404,7 @@ The node provides graceful degradation. Check the `metadata` output to see which
 | Empty output | Ensure POML has `<role>` and `<task>` |
 | Variables not substituting | Check JSON syntax and variable names |
 | Table not loading | Verify file path and install pandas |
-| PDF not processing | Install PyPDF2: `pip install PyPDF2` |
+| PDF not processing | Re-run installation method for your ComfyUI setup |
 | Performance slow | Use "optimized" render mode |
 | Features missing | Check metadata dependencies_status |
 
@@ -413,28 +420,34 @@ def check_dependencies():
         import poml
         deps['poml'] = '✅ Available'
     except ImportError:
-        deps['poml'] = '❌ Missing - pip install poml'
+        deps['poml'] = '❌ Missing'
     
     try:
         import pandas
         deps['pandas'] = '✅ Available'  
     except ImportError:
-        deps['pandas'] = '❌ Missing - pip install pandas'
+        deps['pandas'] = '❌ Missing'
         
     try:
         import PyPDF2
         deps['PyPDF2'] = '✅ Available'
     except ImportError:
-        deps['PyPDF2'] = '❌ Missing - pip install PyPDF2'
+        deps['PyPDF2'] = '❌ Missing'
         
     try:
         from PIL import Image
         deps['Pillow'] = '✅ Available'
     except ImportError:
-        deps['Pillow'] = '❌ Missing - pip install Pillow'
+        deps['Pillow'] = '❌ Missing'
     
     for name, status in deps.items():
         print(f"{name}: {status}")
+    
+    missing = [name for name, status in deps.items() if '❌' in status]
+    if missing:
+        print("\n📋 To install missing dependencies:")
+        print("   ComfyUI Portable: Run install-portable.bat")
+        print("   Standard: pip install -r requirements.txt")
 
 if __name__ == "__main__":
     check_dependencies()
