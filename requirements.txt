@@ -1,0 +1,52 @@
+# Zenkai-POML ComfyUI Node Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core POML functionality
+poml                    # Official Microsoft POML Python SDK
+
+# Data processing and integration
+pandas>=2.0.0                  # Advanced CSV/table processing
+openpyxl>=3.1.0               # Excel file processing (.xlsx)
+xlrd>=2.0.0                   # Legacy Excel file support (.xls)
+
+# Document processing  
+PyPDF2>=3.0.0                 # PDF document parsing
+pdfplumber>=0.9.0             # Alternative robust PDF processing
+
+# Image and multimedia
+Pillow>=10.0.0                # Image processing (PIL)
+
+# Network and external data
+requests>=2.31.0              # HTTP requests for external data sources
+aiohttp>=3.8.0                # Async HTTP for performance (optional)
+
+# JSON and validation
+jsonschema>=4.17.0            # JSON schema validation for variables
+
+# XML processing (enhanced)
+lxml>=4.9.0                   # Robust XML/HTML parsing (alternative to built-in)
+
+# Template processing (if not included in POML SDK)
+jinja2>=3.1.0                 # Template engine backup
+
+# Utility libraries
+pyyaml>=6.0                   # YAML processing for configuration
+typing-extensions>=4.0.0     # Enhanced type hints for older Python
+
+# Optional: Enhanced text processing
+beautifulsoup4>=4.12.0        # HTML parsing and cleanup
+chardet>=5.0.0                # Character encoding detection
+
+# Development and testing (optional)
+pytest>=7.0.0                 # Testing framework
+black>=23.0.0                 # Code formatting  
+flake8>=6.0.0                 # Linting
+
+# ComfyUI specific (if available)
+# Note: ComfyUI doesn't have a pip package, but these may be useful
+torch>=2.0.0                  # PyTorch (often used in ComfyUI environment)
+torchvision>=0.15.0           # Vision utilities
+numpy>=1.24.0                 # Numerical computing (often already available)
+
+# Minimum Python version requirement
+# python_requires=">=3.8"
