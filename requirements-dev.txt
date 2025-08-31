@@ -1,0 +1,26 @@
+# Zenkai-POML Development Dependencies
+# These are optional dependencies for development, testing, and code quality
+# Install with: pip install -r requirements-dev.txt
+
+# Development and testing
+pytest>=7.0.0                 # Testing framework
+black>=23.0.0                 # Code formatting  
+flake8>=6.0.0                 # Linting
+
+# Optional enhanced processing (not used in current implementation)
+pdfplumber>=0.9.0             # Alternative robust PDF processing
+lxml>=4.9.0                   # Robust XML/HTML parsing
+jinja2>=3.1.0                 # Template engine backup
+pyyaml>=6.0                   # YAML processing for configuration
+beautifulsoup4>=4.12.0        # HTML parsing and cleanup
+chardet>=5.0.0                # Character encoding detection
+aiohttp>=3.8.0                # Async HTTP for performance
+xlrd>=2.0.0                   # Legacy Excel file support (.xls)
+
+# Optional ML/AI libraries (may be useful in ComfyUI environment)
+torch>=2.0.0                  # PyTorch
+torchvision>=0.15.0           # Vision utilities
+numpy>=1.24.0                 # Numerical computing
+
+# Type hints for older Python versions
+typing-extensions>=4.0.0     # Enhanced type hints for older Python
