@@ -3,7 +3,7 @@
 # Install with: pip install -r requirements.txt
 
 # Core POML functionality (REQUIRED)
-poml>=1.0.0                    # Official Microsoft POML Python SDK
+poml>=0.0.8                    # Official Microsoft POML Python SDK
 
 # Data processing (REQUIRED for table/CSV functionality)
 pandas>=2.0.0                  # Advanced CSV/table processing
